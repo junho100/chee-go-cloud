@@ -1,6 +1,5 @@
 module "cloudfront" {
-  source  = "terraform-aws-modules/cloudfront/aws"
-  version = "3.4.0"
+  source = "terraform-aws-modules/cloudfront/aws"
 
   origin = {
     hat_web = {
