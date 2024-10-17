@@ -1,6 +1,13 @@
 module "cloudfront" {
   source = "terraform-aws-modules/cloudfront/aws"
 
+  aliases = ["www.${var.domain_name}", "${var.domain_name}"]
+
+  viewer_certificate = {
+    acm_certificate_arn = module.acm.acm_certificate_arn
+    ssl_support_method  = "sni-only"
+  }
+
   origin = {
     cheego_web = {
       domain_name           = module.s3_bucket.s3_bucket_bucket_regional_domain_name
@@ -30,7 +37,7 @@ module "cloudfront" {
 
   default_cache_behavior = {
     target_origin_id       = "cheego_web"
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD"]
   }
