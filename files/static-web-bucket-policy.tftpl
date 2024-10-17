@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Id": "S3StaticWebPolicy",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "${s3_bucket_arn}/*"
+    }
+  ]
+}
