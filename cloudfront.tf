@@ -2,7 +2,7 @@ module "cloudfront" {
   source = "terraform-aws-modules/cloudfront/aws"
 
   origin = {
-    hat_web = {
+    cheego_web = {
       domain_name           = module.s3_bucket.s3_bucket_bucket_regional_domain_name
       origin_access_control = "cheego_web"
     }
