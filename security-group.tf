@@ -71,3 +71,30 @@ module "security_group_for_alb" {
 
   egress_rules = ["all-all"]
 }
+
+module "sg_for_rds" {
+  source = "terraform-aws-modules/security-group/aws"
+
+  name        = format(module.naming.result, "rds-sg")
+  description = "sg for rds instance"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress_with_source_security_group_id = [
+    {
+      from_port                = 3306
+      to_port                  = 3306
+      protocol                 = "tcp"
+      description              = "allow 3306 port traffic from backend instance"
+      source_security_group_id = module.security_group_for_backend.security_group_id
+    },
+    {
+      from_port                = 3306
+      to_port                  = 3306
+      protocol                 = "tcp"
+      description              = "allow 3306 port traffic from bastion"
+      source_security_group_id = module.sg_for_bastion_host.security_group_id
+    }
+  ]
+
+  egress_rules = ["all-all"]
+}
