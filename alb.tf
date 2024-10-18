@@ -13,7 +13,7 @@ module "alb" {
     backend = {
       name             = format(module.naming.result, "backend-tg")
       backend_protocol = "HTTP"
-      backend_port     = 3000
+      backend_port     = 8080
       target_type      = "instance"
       health_check = {
         enabled             = true
