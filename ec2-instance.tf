@@ -37,6 +37,8 @@ module "backend" {
   key_name = aws_key_pair.key_pair_for_backend.key_name
 
   iam_instance_profile = module.backend_instance_role.iam_instance_profile_name
+
+  user_data = file("./files/user-data.sh")
 }
 
 data "aws_ami" "amzn-linux-2023-ami" {
