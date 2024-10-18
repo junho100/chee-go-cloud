@@ -34,10 +34,10 @@ module "security_group_for_backend" {
       source_security_group_id = module.sg_for_bastion_host.security_group_id
     },
     {
-      from_port                = 3000
-      to_port                  = 3000
+      from_port                = 8080
+      to_port                  = 8080
       protocol                 = "tcp"
-      description              = "allow 3000 port traffic from alb"
+      description              = "allow 8080 port traffic from alb"
       source_security_group_id = module.security_group_for_alb.security_group_id
     }
   ]
