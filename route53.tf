@@ -24,5 +24,13 @@ module "route53_records" {
         zone_id = module.cloudfront.cloudfront_distribution_hosted_zone_id
       }
     },
+    {
+      name = "api"
+      type = "A"
+      alias = {
+        name    = module.alb.dns_name
+        zone_id = module.alb.zone_id
+      }
+    },
   ]
 }
