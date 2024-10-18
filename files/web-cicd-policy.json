@@ -3,7 +3,7 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": ["s3:*", "cloudfront:*"],
+      "Action": ["s3:*", "cloudfront:*", "ecr:*", "s3:*", "codedeploy:*"],
       "Resource": "*"
     }
   ]
