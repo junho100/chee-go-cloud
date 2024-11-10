@@ -26,7 +26,7 @@ module "backend" {
 
   name = format(module.naming.result, "backend-ec2")
 
-  ami                         = data.aws_ami.amzn-linux-2023-ami.id
+  ami                         = "ami-02c329a4b4aba6a48"
   instance_type               = "t2.micro"
   availability_zone           = element(module.vpc.azs, 0)
   subnet_id                   = element(module.vpc.private_subnets, 0)
@@ -39,15 +39,6 @@ module "backend" {
   iam_instance_profile = module.backend_instance_role.iam_instance_profile_name
 
   user_data = file("./files/user-data.sh")
-}
-
-data "aws_ami" "amzn-linux-2023-ami" {
-  most_recent = true
-  owners      = ["amazon"]
-  filter {
-    name   = "name"
-    values = ["al2023-ami-2023.*-x86_64"]
-  }
 }
 
 ################################################################################
