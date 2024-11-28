@@ -6,6 +6,8 @@
 
 ## 아키텍처 개요
 
+![arch drawio](https://github.com/user-attachments/assets/bf7c20b5-15ac-46bc-bd3d-703c54b6ef88)
+
 이 인프라는 다음과 같은 주요 컴포넌트들로 구성되어 있습니다:
 
 ### 네트워크 계층
