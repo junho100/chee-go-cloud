@@ -33,3 +33,13 @@ variable "domain_name" {
   description = "domain name"
   type        = string
 }
+
+variable "discord_bot_token" {
+  description = "discord bot token"
+  type        = string
+}
+
+variable "discord_user_id" {
+  description = "discord user id"
+  type        = string
+}
